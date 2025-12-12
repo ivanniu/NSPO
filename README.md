@@ -71,11 +71,3 @@ NSPO/
 
 The `script/` and `evaluation/` directories contain benchmark evaluation scripts.  
 **Note:** You need to manually configure the dataset paths and API keys in these scripts before running them.
-
----
-
-## Pretrained Checkpoint
-
-We provide a checkpoint trained with NSPO based on Qwen2.5-7B-Instruct:
-
-🔗 [Qwen2.5-7B-Instruct-NSPO on Hugging Face](https://huggingface.co/ICLR2026NSPO/Qwen2.5-7B-Instruct-NSPO)
