@@ -1,8 +1,18 @@
-# NSPO: Null-Space constrained Policy Optimization
+# NSPO: Null-Space constrained Policy Optimization for Safety Alignment
 
 
+This is the **official implementation** of the [**paper**](https://arxiv.org/abs/2512.11391):  
+**"Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization"** (ICLR 2026)
 
-## Project Structure
+---
+
+## 💡 Overview
+
+Null-Space constrained Policy Optimization (NSPO) is a RL framework for LLM safety alignment while preserving their core abilities.  Notably, NSPO is data-efficient and only requires 40\% of public human-annotated safety data from PKU-SafeRLHF to achieve promising performance.
+
+---
+
+## 📂 Project Structure
 
 ```
 NSPO/
@@ -26,25 +36,23 @@ NSPO/
 │   └── superGPQA_eval.sh
 └── verl/
 ```
-
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### Setup
+### 1. Setup & Environment
 
-1. **Download Required Assets**  
-   - Get the 🔗 [**Qwen2.5-7B-Instruct**](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) model from Hugging Face.
-   - Download the 🔗 [**PKU-SafeRLHF**](https://huggingface.co/datasets/PKU-Alignment/PKU-SafeRLHF) dataset from Hugging Face.
+**Download Assets:**
+* **Base Model:** [Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
+* **Dataset:** [PKU-SafeRLHF](https://huggingface.co/datasets/PKU-Alignment/PKU-SafeRLHF)
 
-2. **Install Dependencies**
-   ```bash
-   cd verl
-   pip install -r requirements.txt
-   pip install .
-   ```
-
-3. **Configure Paths**  
+**Installation:**
+```bash
+cd NSPO/verl
+pip install -r requirements.txt
+pip install .
+```
+### 2. Configuration
    - Modify `model_path` and `dataset_path` in:
      ```
      NSPO/verl/verl/workers/fsdp_workers.py (lines 248–249)
@@ -58,7 +66,7 @@ NSPO/
      NSPO/script/start_vllm_llama_guard.sh
      ```
 
-4. **Launch Services and Training**
+### 3. Launch Services and Training
    ```bash
    cd script
    bash start_vllm_llama_guard.sh
@@ -67,7 +75,29 @@ NSPO/
 
 ---
 
-## Evaluation
+## 📊 Evaluation
 
 The `script/` and `evaluation/` directories contain benchmark evaluation scripts.  
 **Note:** You need to manually configure the dataset paths and API keys in these scripts before running them.
+
+---
+
+## 🤗 Models & Checkpoints
+
+We have released our trained checkpoint on Hugging Face:
+
+* [Qwen2.5-7B-Instruct-NSPO](https://huggingface.co/ICLR2026NSPO/Qwen2.5-7B-Instruct-NSPO): The policy model fine-tuned using NSPO on the Qwen2.5-7B-Instruct.
+
+---
+
+## ✍️ Citation
+
+If you find this work helpful for your research, please cite our paper:
+```
+@article{niu2025mitigating,
+  title={Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization},
+  author={Niu, Yifan and Xiao, Han and Liu, Dongyi and Chen, Nuo and Li, Jia},
+  journal={arXiv preprint arXiv:2512.11391},
+  year={2025}
+}
+```
